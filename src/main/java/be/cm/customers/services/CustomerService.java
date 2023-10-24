@@ -7,9 +7,13 @@ import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
 public class CustomerService {
-    public Customer registerCustomer(RegisterCustomerDTO registerCustomerDTO) {
+    CustomerRepository customerRepository;
 
-        CustomerRepository customerRepository = new CustomerRepository();
+    public CustomerService() {
+        this.customerRepository = new CustomerRepository();
+    }
+
+    public Customer registerCustomer(RegisterCustomerDTO registerCustomerDTO) {
 
         Customer createdCustomer = new Customer(
                 registerCustomerDTO.getFirstName(),

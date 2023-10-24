@@ -18,8 +18,8 @@ import org.jboss.resteasy.reactive.ResponseStatus;
 @Path("customer")
 public class CustomerController {
 
-    CustomerService customerService = new CustomerService();
-    CustomerMapper customerMapper = new CustomerMapper();
+    private CustomerService customerService = new CustomerService();
+    private CustomerMapper customerMapper = new CustomerMapper();
 
     public CustomerController(CustomerService customerService, CustomerMapper customerMapper) {
         this.customerService = customerService;
