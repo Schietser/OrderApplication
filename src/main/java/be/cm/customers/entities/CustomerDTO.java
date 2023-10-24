@@ -15,4 +15,24 @@ public class CustomerDTO {
         this.emailAdress = emailAdress;
         this.phoneNumber = phoneNumber;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getEmailAdress() {
+        return emailAdress;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
 }

@@ -1,5 +1,8 @@
 package be.cm.customers.entities;
 
+import be.cm.customers.EmailValidation;
+import be.cm.customers.PhoneValidator;
+
 import java.util.UUID;
 
 public class Customer {
@@ -14,7 +17,13 @@ public class Customer {
         this.id = UUID.randomUUID().toString();
         this.firstName = firstName;
         this.lastName = lastName;
+        if (!EmailValidation.isValidEmail(emailAdress)){
+            throw new IllegalArgumentException("Invalid email address");
+        }
         this.emailAdress = emailAdress;
+        if (!PhoneValidator.isValidBelgianPhoneNumber(phoneNumber)){
+            throw new IllegalArgumentException("Invalid phone number");
+        }
         this.phoneNumber = phoneNumber;
     }
 

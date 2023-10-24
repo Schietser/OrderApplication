@@ -3,7 +3,9 @@ package be.cm.items.services;
 import be.cm.items.entities.AddItemDTO;
 import be.cm.items.entities.Item;
 import be.cm.items.repositories.ItemRepository;
+import jakarta.enterprise.context.ApplicationScoped;
 
+@ApplicationScoped
 public class ItemService {
 
     ItemRepository itemRepository;
