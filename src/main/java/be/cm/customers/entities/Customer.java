@@ -17,13 +17,7 @@ public class Customer {
         this.id = UUID.randomUUID().toString();
         this.firstName = firstName;
         this.lastName = lastName;
-        if (!EmailValidation.isValidEmail(emailAdress)){
-            throw new IllegalArgumentException("Invalid email address");
-        }
         this.emailAdress = emailAdress;
-        if (!PhoneValidator.isValidBelgianPhoneNumber(phoneNumber)){
-            throw new IllegalArgumentException("Invalid phone number");
-        }
         this.phoneNumber = phoneNumber;
     }
 

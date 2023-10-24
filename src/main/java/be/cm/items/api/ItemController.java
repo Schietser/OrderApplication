@@ -1,16 +1,17 @@
 package be.cm.items.api;
 
+import be.cm.customers.entities.CustomerDTO;
 import be.cm.items.entities.AddItemDTO;
+import be.cm.items.entities.Item;
 import be.cm.items.entities.ItemDTO;
 import be.cm.items.services.ItemMapper;
 import be.cm.items.services.ItemService;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.POST;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import org.jboss.resteasy.reactive.ResponseStatus;
+
+import java.util.List;
 
 @Path("/items")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -24,6 +25,19 @@ public class ItemController {
     public ItemController(ItemService itemService, ItemMapper itemMapper) {
         this.itemService = itemService;
         this.itemMapper = itemMapper;
+    }
+
+    @GET
+    @ResponseStatus(200)
+    public List<ItemDTO> getAllItems(){
+        return itemMapper.mapToListOfItemDTO(itemService.getAllItems());
+    }
+
+    @GET
+    @Path("/{id}")
+    @ResponseStatus(200)
+    public Item getItemById(@PathParam("id") String id){
+        return itemService.getItemById(id);
     }
 
     @POST

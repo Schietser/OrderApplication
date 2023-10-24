@@ -4,6 +4,9 @@ import be.cm.items.entities.Item;
 import be.cm.items.entities.ItemDTO;
 import jakarta.enterprise.context.ApplicationScoped;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @ApplicationScoped
 public class ItemMapper {
     public ItemDTO mapToItemDTO(Item item) {
@@ -15,5 +18,9 @@ public class ItemMapper {
                 item.getPrice()
         );
 
+    }
+
+    public List<ItemDTO> mapToListOfItemDTO(List<Item> allItems) {
+        return allItems.stream().map(this::mapToItemDTO).collect(Collectors.toList());
     }
 }

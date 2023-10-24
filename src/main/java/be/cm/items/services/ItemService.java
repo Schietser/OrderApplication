@@ -5,6 +5,8 @@ import be.cm.items.entities.Item;
 import be.cm.items.repositories.ItemRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 
+import java.util.List;
+
 @ApplicationScoped
 public class ItemService {
 
@@ -26,5 +28,13 @@ public class ItemService {
         itemRepository.save(createdItem);
 
         return createdItem;
+    }
+
+    public List<Item> getAllItems() {
+        return itemRepository.getAllItems();
+    }
+
+    public Item getItemById(String id) {
+        return itemRepository.getItemById(id);
     }
 }

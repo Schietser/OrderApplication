@@ -11,8 +11,9 @@ import jakarta.ws.rs.core.Response;
 import org.jboss.resteasy.reactive.ResponseStatus;
 import org.jboss.resteasy.reactive.server.ServerExceptionMapper;
 
+import java.util.List;
+
 import static jakarta.ws.rs.core.Response.Status.BAD_REQUEST;
-import static org.jboss.resteasy.reactive.RestResponse.StatusCode.NOT_FOUND;
 
 @ApplicationScoped
 @Consumes(MediaType.APPLICATION_JSON)
@@ -26,6 +27,12 @@ public class CustomerController {
     public CustomerController(CustomerService customerService, CustomerMapper customerMapper) {
         this.customerService = customerService;
         this.customerMapper = customerMapper;
+    }
+
+    @GET
+    @ResponseStatus(200)
+    public List<CustomerDTO> getAllCustomers(){
+        return customerMapper.mapToListOfCustomerDTO(customerService.getAllCustomers());
     }
 
     @POST
