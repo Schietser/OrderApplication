@@ -10,16 +10,16 @@ import java.util.concurrent.ConcurrentHashMap;
 @ApplicationScoped
 public class ItemRepository {
 
-    private static final ConcurrentHashMap<String, Item> ITEM_DB = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<String, Item> itemDB = new ConcurrentHashMap<>();
     public void save(Item createdItem) {
-        ITEM_DB.put(createdItem.getId(), createdItem);
+        itemDB.put(createdItem.getId(), createdItem);
     }
 
     public List<Item> getAllItems() {
-        return new ArrayList<>(ITEM_DB.values());
+        return new ArrayList<>(itemDB.values());
     }
 
     public Item getItemById(String id) {
-        return ITEM_DB.get(id);
+        return itemDB.get(id);
     }
 }

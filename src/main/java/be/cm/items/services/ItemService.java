@@ -12,8 +12,8 @@ public class ItemService {
 
     ItemRepository itemRepository;
 
-    public ItemService() {
-        this.itemRepository = new ItemRepository();
+    public ItemService(ItemRepository itemRepository) {
+        this.itemRepository = itemRepository;
     }
 
     public Item addItem(AddItemDTO addItemDTO) {

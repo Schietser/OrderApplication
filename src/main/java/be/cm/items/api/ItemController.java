@@ -15,7 +15,6 @@ import java.util.List;
 @Path("/items")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-@ApplicationScoped
 public class ItemController {
 
     private final ItemService itemService;

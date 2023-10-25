@@ -11,8 +11,8 @@ import java.util.List;
 public class CustomerService {
     CustomerRepository customerRepository;
 
-    public CustomerService() {
-        this.customerRepository = new CustomerRepository();
+    public CustomerService(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
     }
 
     public Customer registerCustomer(RegisterCustomerDTO registerCustomerDTO) {

@@ -15,14 +15,14 @@ import static be.cm.customers.PhoneValidator.isValidBelgianPhoneNumber;
 @ApplicationScoped
 public class CustomerRepository {
 
-       private static final Map<String, Customer> CUSTOMER_DB = new ConcurrentHashMap<>();
+       private final Map<String, Customer> customerDB = new ConcurrentHashMap<>();
 
     public void save(Customer createdCustomer) {
-        CUSTOMER_DB.put(createdCustomer.getId(), createdCustomer);
+        customerDB.put(createdCustomer.getId(), createdCustomer);
     }
 
     public Customer getCustomerById(String customerId) {
-        return CUSTOMER_DB.get(customerId);
+        return customerDB.get(customerId);
     }
 
     public String validateEmail(String email) {
@@ -30,7 +30,7 @@ public class CustomerRepository {
             throw new IllegalArgumentException("Email not filled in");
         }
         Optional<Map.Entry<String, Customer>> result =
-                CUSTOMER_DB.entrySet()
+                customerDB.entrySet()
                         .stream()
                         .filter(e -> e.getValue().getEmailAdress().equals(email.toLowerCase()))
                         .findFirst();
@@ -48,7 +48,7 @@ public class CustomerRepository {
             throw new IllegalArgumentException("Phone number not filled in");
         }
         Optional<Map.Entry<String, Customer>> result =
-                CUSTOMER_DB.entrySet()
+                customerDB.entrySet()
                         .stream()
                         .filter(e -> e.getValue().getPhoneNumber().equals(phoneNumber.toLowerCase()))
                         .findFirst();
@@ -62,6 +62,6 @@ public class CustomerRepository {
     }
 
     public List<Customer> getAllCustomers() {
-        return new ArrayList<>(CUSTOMER_DB.values());
+        return new ArrayList<>(customerDB.values());
     }
 }

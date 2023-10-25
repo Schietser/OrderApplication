@@ -15,14 +15,13 @@ import java.util.List;
 
 import static jakarta.ws.rs.core.Response.Status.BAD_REQUEST;
 
-@ApplicationScoped
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 @Path("customers")
 public class CustomerController {
 
-    private CustomerService customerService = new CustomerService();
-    private CustomerMapper customerMapper = new CustomerMapper();
+    private final CustomerService customerService;
+    private final CustomerMapper customerMapper;
 
     public CustomerController(CustomerService customerService, CustomerMapper customerMapper) {
         this.customerService = customerService;
