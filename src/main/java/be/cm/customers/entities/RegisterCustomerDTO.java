@@ -7,6 +7,16 @@ public class RegisterCustomerDTO {
     private String emailAdress;
     private String  phoneNumber;
 
+    public RegisterCustomerDTO() {
+    }
+
+    public RegisterCustomerDTO(String firstName, String lastName, String emailAdress, String phoneNumber) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.emailAdress = emailAdress;
+        this.phoneNumber = phoneNumber;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -25,17 +35,5 @@ public class RegisterCustomerDTO {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public void setEmailAdress(String emailAdress) {
-        this.emailAdress = emailAdress;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
     }
 }

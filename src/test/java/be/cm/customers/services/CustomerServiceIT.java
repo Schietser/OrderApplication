@@ -16,11 +16,8 @@ public class CustomerServiceIT {
 
     @Test
     public void testRegisterCustomer() {
-        RegisterCustomerDTO validCustomerDTO = new RegisterCustomerDTO();
-        validCustomerDTO.setFirstName("John");
-        validCustomerDTO.setLastName("Doe");
-        validCustomerDTO.setEmailAdress("john.doe@example.com");
-        validCustomerDTO.setPhoneNumber("0470123456");
+        RegisterCustomerDTO validCustomerDTO = new RegisterCustomerDTO(
+                "John","Doe","john.doe@example.com","0470123456");
 
         Customer createdCustomer = customerService.registerCustomer(validCustomerDTO);
 
@@ -32,11 +29,8 @@ public class CustomerServiceIT {
 
     @Test
     public void testInvalidEmail() {
-        RegisterCustomerDTO invalidCustomerDTO = new RegisterCustomerDTO();
-        invalidCustomerDTO.setFirstName("Jane");
-        invalidCustomerDTO.setLastName("Smith");
-        invalidCustomerDTO.setEmailAdress("invalid-email");
-        invalidCustomerDTO.setPhoneNumber("0470123456");
+        RegisterCustomerDTO invalidCustomerDTO = new RegisterCustomerDTO(
+                "Jane","Smith","invalid-email","0470123456");
 
         // Ensure that an invalid email address results in an exception
         assertThrows(IllegalArgumentException.class, () -> customerService.registerCustomer(invalidCustomerDTO));
@@ -44,11 +38,8 @@ public class CustomerServiceIT {
 
     @Test
     public void testInvalidPhoneNumber() {
-        RegisterCustomerDTO invalidCustomerDTO = new RegisterCustomerDTO();
-        invalidCustomerDTO.setFirstName("Alice");
-        invalidCustomerDTO.setLastName("Johnson");
-        invalidCustomerDTO.setEmailAdress("alice@example.com");
-        invalidCustomerDTO.setPhoneNumber("invalid-phone-number");
+        RegisterCustomerDTO invalidCustomerDTO = new RegisterCustomerDTO(
+                "Alice","Johnson","alice@example.com","invalid-phone-number");
 
         // Ensure that an invalid phone number results in an exception
         assertThrows(IllegalArgumentException.class, () -> customerService.registerCustomer(invalidCustomerDTO));
@@ -64,11 +55,7 @@ public class CustomerServiceIT {
 
     @Test
     public void testRegisterCustomerWithEmptyFieldsButValidPhoneAndEmail() {
-        RegisterCustomerDTO customerDTO = new RegisterCustomerDTO();
-        customerDTO.setFirstName("");
-        customerDTO.setLastName("");
-        customerDTO.setEmailAdress("originalmail@example.com");
-        customerDTO.setPhoneNumber("0488556633");
+        RegisterCustomerDTO customerDTO = new RegisterCustomerDTO("","","originalmail@example.com","0488556633");
 
         // Attempt to register a customer with empty fields
         assertThrows(IllegalArgumentException.class, () -> customerService.registerCustomer(customerDTO));

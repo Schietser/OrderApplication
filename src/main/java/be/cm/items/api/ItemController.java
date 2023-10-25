@@ -1,6 +1,5 @@
 package be.cm.items.api;
 
-import be.cm.customers.entities.CustomerDTO;
 import be.cm.items.entities.AddItemDTO;
 import be.cm.items.entities.Item;
 import be.cm.items.entities.ItemDTO;
