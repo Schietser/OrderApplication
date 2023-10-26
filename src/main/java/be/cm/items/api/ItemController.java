@@ -8,6 +8,7 @@ import be.cm.items.services.ItemService;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 import org.jboss.resteasy.reactive.ResponseStatus;
 
 import java.util.List;
@@ -42,6 +43,9 @@ public class ItemController {
     @Path("/add")
     @ResponseStatus(201)
     public ItemDTO addItem(AddItemDTO addItemDTO){
+        if (addItemDTO.getName() == null || addItemDTO.getDescription() == null){
+            throw new WebApplicationException("Item name is required.", Response.Status.BAD_REQUEST);
+        }
         return itemMapper.mapToItemDTO(itemService.addItem(addItemDTO));
 
     }

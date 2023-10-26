@@ -2,10 +2,17 @@ package be.cm.items.entities;
 
 public class AddItemDTO {
 
-    private String name;
-    private String description;
-    private double price;
-    private int amount;
+    private final String name;
+    private final String description;
+    private final double price;
+    private final int amount;
+
+    public AddItemDTO(String name, String description, double price, int amount) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.amount = amount;
+    }
 
     public String getName() {
         return name;

@@ -22,4 +22,8 @@ public class ItemRepository {
     public Item getItemById(String id) {
         return itemDB.get(id);
     }
+
+    public void resetDatabase(){
+        itemDB.clear();
+    }
 }
